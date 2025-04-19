@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/query-test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: HikariPool-QueryTest
+      maximum-pool-size: 10   # Increase pool size for concurrent DB connections
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false           # Disable for better performance (optional)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc:
+          batch_size: 1000    # Must match your Java-side batch size
+        order_inserts: true   # Optimize insert ordering for batching
+        order_updates: true   # (if updating in bulk too)
+        batch_versioned_data: true
+        generate_statistics: false  # Optional for performance
