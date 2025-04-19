@@ -175,35 +175,43 @@ public class TicketService {
 //    }
 
     //////////////////////////////// TEST 3 ////////////////////////////////
-    public List<TicketSummaryRow1> getSummary(LocalDateTime start, LocalDateTime end) {
-        return ticketRepository.getFullSummaryBetween(start, end);
-    }
-
-    public List<TicketSummaryRow1> getDailySummary(LocalDate date) {
-        LocalDateTime startOfDay = date.atStartOfDay();
-        LocalDateTime endOfDay = date.atTime(23, 59, 59);
-
-        return getSummary(startOfDay, endOfDay);
-    }
-
-    public List<TicketSummaryRow1> getWeeklySummary(LocalDate date) {
-        LocalDateTime startOfDay = date.atStartOfDay();
-        LocalDateTime endOfDay = date.minusDays(1).plusWeeks(1).atTime(23, 59, 59);
-
-        return getSummary(startOfDay, endOfDay);
-    }
-
-    public List<TicketSummaryRow1> getMonthlySummary(LocalDate date) {
-        LocalDateTime startOfDay = date.atStartOfDay();
-        LocalDateTime endOfDay = date.plusMonths(1).atTime(23, 59, 59);
-
-        return getSummary(startOfDay, endOfDay);
-    }
-
-    public List<TicketSummaryRow1> getYearlySummary(LocalDate date) {
-        LocalDateTime startOfDay = date.atStartOfDay();
-        LocalDateTime endOfDay = date.plusYears(1).atTime(23, 59, 59);
-
-        return getSummary(startOfDay, endOfDay);
-    }
+//      Performance
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-20,102238,99257,101006,129723
+//      2025-04-21,93850,94494,96673,128649
+//      2025-04-22,93841,94398,96666,128445
+//      2g heap size
+//
+//
+//    public List<TicketSummaryRow1> getSummary(LocalDateTime start, LocalDateTime end) {
+//        return ticketRepository.getFullSummaryBetween(start, end);
+//    }
+//
+//    public List<TicketSummaryRow1> getDailySummary(LocalDate date) {
+//        LocalDateTime startOfDay = date.atStartOfDay();
+//        LocalDateTime endOfDay = date.atTime(23, 59, 59);
+//
+//        return getSummary(startOfDay, endOfDay);
+//    }
+//
+//    public List<TicketSummaryRow1> getWeeklySummary(LocalDate date) {
+//        LocalDateTime startOfDay = date.atStartOfDay();
+//        LocalDateTime endOfDay = date.minusDays(1).plusWeeks(1).atTime(23, 59, 59);
+//
+//        return getSummary(startOfDay, endOfDay);
+//    }
+//
+//    public List<TicketSummaryRow1> getMonthlySummary(LocalDate date) {
+//        LocalDateTime startOfDay = date.atStartOfDay();
+//        LocalDateTime endOfDay = date.plusMonths(1).atTime(23, 59, 59);
+//
+//        return getSummary(startOfDay, endOfDay);
+//    }
+//
+//    public List<TicketSummaryRow1> getYearlySummary(LocalDate date) {
+//        LocalDateTime startOfDay = date.atStartOfDay();
+//        LocalDateTime endOfDay = date.plusYears(1).atTime(23, 59, 59);
+//
+//        return getSummary(startOfDay, endOfDay);
+//    }
 }

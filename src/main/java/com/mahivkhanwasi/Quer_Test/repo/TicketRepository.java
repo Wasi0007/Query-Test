@@ -33,23 +33,23 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 //    );
 
     //////////////////////////////// TEST 3 ////////////////////////////////
-    @Query(value = """
-        SELECT 
-            totals.total_tickets AS totalTickets,
-            totals.total_cost AS totalCost,
-            t.status AS status,
-            COUNT(t.id) AS statusCount
-        FROM ticket t
-        JOIN (
-            SELECT COUNT(*) AS total_tickets, COALESCE(SUM(cost), 0) AS total_cost
-            FROM ticket
-            WHERE created_at BETWEEN :start AND :end
-        ) AS totals ON true
-        WHERE t.created_at BETWEEN :start AND :end
-        GROUP BY t.status, totals.total_tickets, totals.total_cost
-        """, nativeQuery = true)
-    List<TicketSummaryRow1> getFullSummaryBetween(
-            @Param("start") LocalDateTime start,
-            @Param("end") LocalDateTime end
-    );
+//    @Query(value = """
+//        SELECT
+//            totals.total_tickets AS totalTickets,
+//            totals.total_cost AS totalCost,
+//            t.status AS status,
+//            COUNT(t.id) AS statusCount
+//        FROM ticket t
+//        JOIN (
+//            SELECT COUNT(*) AS total_tickets, COALESCE(SUM(cost), 0) AS total_cost
+//            FROM ticket
+//            WHERE created_at BETWEEN :start AND :end
+//        ) AS totals ON true
+//        WHERE t.created_at BETWEEN :start AND :end
+//        GROUP BY t.status, totals.total_tickets, totals.total_cost
+//        """, nativeQuery = true)
+//    List<TicketSummaryRow1> getFullSummaryBetween(
+//            @Param("start") LocalDateTime start,
+//            @Param("end") LocalDateTime end
+//    );
 }
