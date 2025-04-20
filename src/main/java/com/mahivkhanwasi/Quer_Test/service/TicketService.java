@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.stream.Collectors;
 @Service
 public class TicketService {
 
@@ -54,6 +54,12 @@ public class TicketService {
 //      2025-04-21,59285,64882,90787,0
 //      6g heap size and yearly data can not be fetched even with 10g heap size
 //
+//      Performance with indexing
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,2019,14450,94957,0
+//      2025-04-19,1782,15249,96695,0
+//      2025-04-20,1577,16898,98234,0
+//      6g heap size and yearly data can not be fetched even with 10g heap size
 //
 //
 //    public TicketSummaryResponse getDailySummary(LocalDate date) {
@@ -125,6 +131,14 @@ public class TicketService {
 //      2g heap size
 //
 //
+//      Performance with index
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,1881,13050,99379,131855
+//      2025-04-19,863,14027,99885,136266
+//      2025-04-20,823,19201,103539,136578
+//      2g heap size
+//
+//
 //    public TicketSummaryResponse getDailySummary(LocalDate date) {
 //        LocalDateTime startOfDay = date.atStartOfDay();
 //        LocalDateTime endOfDay = date.atTime(23, 59, 59);
@@ -180,6 +194,12 @@ public class TicketService {
 //      2025-04-20,102238,99257,101006,129723
 //      2025-04-21,93850,94494,96673,128649
 //      2025-04-22,93841,94398,96666,128445
+//      2g heap size
+//      Performance with index
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,1936,15593,99269,134215
+//      2025-04-19,836,15291,102083,130186
+//      2025-04-20,836,18028,101004,133570
 //      2g heap size
 //
 //

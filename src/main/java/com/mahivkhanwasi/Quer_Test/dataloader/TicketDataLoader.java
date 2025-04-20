@@ -63,7 +63,7 @@ public class TicketDataLoader implements CommandLineRunner {
             return;
         }
 
-        LocalDate startDate = LocalDate.now();
+        LocalDate startDate = LocalDate.of(2025, 4, 18);
         LocalDate endDate = startDate.plusDays(2);
         int ticketCountPerDay = 200000;
 
