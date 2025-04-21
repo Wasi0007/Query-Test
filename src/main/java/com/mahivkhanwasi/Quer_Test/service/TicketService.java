@@ -54,11 +54,18 @@ public class TicketService {
 //      2025-04-21,59285,64882,90787,0
 //      6g heap size and yearly data can not be fetched even with 10g heap size
 //
-//      Performance with indexing
+//      Performance with createdAt index
 //      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
 //      2025-04-18,2019,14450,94957,0
 //      2025-04-19,1782,15249,96695,0
 //      2025-04-20,1577,16898,98234,0
+//      6g heap size and yearly data can not be fetched even with 10g heap size
+//
+//      Performance with createdAt,status index
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,3005,20932,105885,0
+//      2025-04-19,2233,18246,112056,0
+//      2025-04-20,2117,15429,103774,0
 //      6g heap size and yearly data can not be fetched even with 10g heap size
 //
 //
@@ -130,14 +137,19 @@ public class TicketService {
 //      2025-04-21,94840,95313,97503,129187
 //      2g heap size
 //
-//
-//      Performance with index
+//      Performance with createdAt index
 //      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
 //      2025-04-18,1881,13050,99379,131855
 //      2025-04-19,863,14027,99885,136266
 //      2025-04-20,823,19201,103539,136578
 //      2g heap size
 //
+//      Performance with createdAt,status index
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,1582,12117,60419,149034
+//      2025-04-19,1261,10607,62443,147776
+//      2025-04-20,1043,9249,59147,144650
+//      2g heap size
 //
 //    public TicketSummaryResponse getDailySummary(LocalDate date) {
 //        LocalDateTime startOfDay = date.atStartOfDay();
@@ -195,13 +207,20 @@ public class TicketService {
 //      2025-04-21,93850,94494,96673,128649
 //      2025-04-22,93841,94398,96666,128445
 //      2g heap size
-//      Performance with index
+//
+//      Performance with createdAt index
 //      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
 //      2025-04-18,1936,15593,99269,134215
 //      2025-04-19,836,15291,102083,130186
 //      2025-04-20,836,18028,101004,133570
 //      2g heap size
 //
+//      Performance with createdAt,status index
+//      date,dayTimeMs,weekTimeMs,monthTimeMs,yearTimeMs
+//      2025-04-18,1801,12418,61065,137800
+//      2025-04-19,1066,9546,55060,139333
+//      2025-04-20,840,9509,59709,189575
+//      2g heap size
 //
 //    public List<TicketSummaryRow1> getSummary(LocalDateTime start, LocalDateTime end) {
 //        return ticketRepository.getFullSummaryBetween(start, end);
